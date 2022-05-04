@@ -2,7 +2,7 @@
 
 ## Archetype
 ```shell
-mvn archetype:generate -DgroupId="org.camel.examples"  -DartifactId="content-ased-outer" -DarchetypeGroupId="org.apache.camel.archetypes" -DarchetypeArtifactId="camel-archetype-spring-boot" -DinteractiveMode=false
+mvn archetype:generate -DgroupId="org.camel.examples"  -DartifactId="content-based-router" -DarchetypeGroupId="org.apache.camel.archetypes" -DarchetypeArtifactId="camel-archetype-spring-boot" -DinteractiveMode=false
 ```
 
 ## Example

@@ -1,0 +1,4 @@
+/home/lhsribas/Development/immersion/apache-camel/apache-camel-immersion/examples-code/content-based-router/src/main/java/org/camel/examples/bean/MySpringBean.java
+/home/lhsribas/Development/immersion/apache-camel/apache-camel-immersion/examples-code/content-based-router/src/main/java/org/camel/examples/CamelSpringBootApplication.java
+/home/lhsribas/Development/immersion/apache-camel/apache-camel-immersion/examples-code/content-based-router/src/main/java/org/camel/examples/route/ContentBasedRouter.java
+/home/lhsribas/Development/immersion/apache-camel/apache-camel-immersion/examples-code/content-based-router/src/main/java/org/camel/examples/route/BaseRouter.java
