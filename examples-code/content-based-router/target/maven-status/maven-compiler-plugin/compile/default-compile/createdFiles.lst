@@ -1,4 +1,0 @@
-org/camel/examples/bean/MySpringBean.class
-org/camel/examples/route/ContentBasedRouter.class
-org/camel/examples/CamelSpringBootApplication.class
-org/camel/examples/route/BaseRouter.class

@@ -1,6 +1,8 @@
 package org.camel.examples.route;
 
 import org.apache.camel.builder.RouteBuilder;
+import org.camel.examples.bean.ContentBasedRouterBean;
+import org.camel.examples.processor.ProcessorDirectB;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -22,25 +24,19 @@ public class ContentBasedRouter extends RouteBuilder {
 
         // Router direct:b
         from("direct:b").routeId("direct-b-id")
-                .process(exchange -> {
-                    exchange.getMessage().setBody("direct-b-id");
-                })
+                .process(new ProcessorDirectB())
                 .to("stream:out")
         .end();
 
         // Router direct:c
         from("direct:c").routeId("direct-c-id")
-                .process(exchange -> {
-                    exchange.getMessage().setBody("direct-c-id");
-                })
+                .bean(ContentBasedRouterBean.class, "directC")
                 .to("stream:out")
         .end();
 
         // Router direct:d
         from("direct:d").routeId("direct-d-id")
-                .process(exchange -> {
-                    exchange.getMessage().setBody("direct-d-id");
-                })
+                .bean(ContentBasedRouterBean.class, "directD")
                 .to("stream:out")
         .end();
     }
