@@ -1,11 +1,9 @@
 package org.camel.app.model;
 
-import java.time.LocalDate;
 
 public class Movie {
 
     private String nome;
-    private LocalDate lancamento;
     private String genero;
 
     public String getNome() {
@@ -14,14 +12,6 @@ public class Movie {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public LocalDate getLancamento() {
-        return lancamento;
-    }
-
-    public void setLancamento(LocalDate lancamento) {
-        this.lancamento = lancamento;
     }
 
     public String getGenero() {

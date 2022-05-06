@@ -24,6 +24,6 @@ public class RestConfigRouter extends RouteBuilder {
         restConfiguration()
             .dataFormatProperty("prettyPrint", "true")
             .component("servlet")
-            .bindingMode(RestBindingMode.json_xml);
+            .bindingMode(RestBindingMode.json);
     }
 }

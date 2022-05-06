@@ -21,9 +21,9 @@ public class MovieRestRouter extends RouteBuilder {
                 .id("rest-movies-byId-id")
                 .description("Get movie byId")
                 .consumes(MediaType.APPLICATION_JSON_VALUE)
-                .produces(MediaType.APPLICATION_ATOM_XML_VALUE)
+                .produces(MediaType.APPLICATION_JSON_VALUE)
 
-                .outType(Movie.class)
+                .outType(List.class)
                 .to("direct:all")
 
             .post("/save")

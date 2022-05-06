@@ -1,0 +1,6 @@
+org/camel/app/router/internal/MovieInternalRouter.class
+org/camel/app/CamelSpringBootApplication.class
+org/camel/app/model/Movie.class
+org/camel/app/bean/MovieBean.class
+org/camel/app/router/rest/MovieRestRouter.class
+org/camel/app/config/RestConfigRouter.class

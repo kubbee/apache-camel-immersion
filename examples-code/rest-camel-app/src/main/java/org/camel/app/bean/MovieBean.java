@@ -1,13 +1,15 @@
 package org.camel.app.bean;
 
+import org.apache.camel.Exchange;
 import org.camel.app.model.Movie;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MovieBean {
 
-    public List<Movie> getMovies(){
+    public void getMovies(Exchange exchange){
         List<Movie> movies = new ArrayList<>();
 
         for(int a=0; a<=10; a++){
@@ -18,6 +20,6 @@ public class MovieBean {
             movies.add(m);
         }
 
-        return movies;
+        exchange.getMessage().setBody(movies);
     }
 }
