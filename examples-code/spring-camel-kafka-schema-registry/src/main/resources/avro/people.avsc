@@ -1,0 +1,15 @@
+{
+    "type": "record",
+    "name": "People",
+    "namespace": "com.github.mvallim.camelkafka.model",
+    "doc": "Schema for com.github.mvallim.camelkafka.model.People",
+    "fields": [
+        {
+            "name": "name",
+            "type": [
+                "null",
+                "string"
+            ]
+        }
+    ]
+}

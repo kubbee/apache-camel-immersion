@@ -1,0 +1,22 @@
+{
+    "type": "record",
+    "name": "Movie",
+    "namespace": "com.github.mvallim.camelkafka.model",
+    "doc": "Schema for com.github.mvallim.camelkafka.model.Movie",
+    "fields": [
+        {
+            "name": "name",
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        {
+            "name": "gender",
+            "type": [
+                "null",
+                "string"
+            ]
+        }
+    ]
+}
