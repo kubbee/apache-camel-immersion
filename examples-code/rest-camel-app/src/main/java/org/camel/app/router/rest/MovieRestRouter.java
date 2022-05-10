@@ -15,14 +15,20 @@ public class MovieRestRouter extends RouteBuilder {
     public void configure() throws Exception {
         rest("/movies")
             .id("rest-movies-id")
-            .get("/all")
-                .id("rest-movies-byId-id")
-                .description("Get movie byId")
+            .get("/findAll")
+                .id("rest-movies-findAll-id")
+                .description("Get movies")
                 .consumes(MediaType.APPLICATION_JSON_VALUE)
                 .produces(MediaType.APPLICATION_JSON_VALUE)
+                .to("direct:findAll-movies")
 
-                .outType(List.class)
-                .to("direct:all")
+            .get("/findByGender")
+                .id("rest-movies-findByGender-id")
+                .description("Find Movie by Gender")
+                .consumes(MediaType.APPLICATION_JSON_VALUE)
+                .produces(MediaType.APPLICATION_JSON_VALUE)
+                .to("direct:findByGender-movies")
+
 
             .post("/save")
                 .id("rest-movies-save-id")

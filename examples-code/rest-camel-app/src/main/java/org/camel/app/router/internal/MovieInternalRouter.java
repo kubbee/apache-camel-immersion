@@ -19,5 +19,17 @@ public class MovieInternalRouter extends RouteBuilder {
             .routeDescription("Send a movie to save on database.")
             .marshal().json(JsonLibrary.Jackson, Movie.class)
             .to("direct:mongodb-movie-insert");
+
+        from("direct:findAll-movies")
+                .routeId("direct-findAll-movies-id")
+                .description("Find all movies on the database")
+                .to("direct:mongodb-movie-findAll");
+
+        from("direct:findByGender-movies")
+                .routeId("direct-findByGender-movies-id")
+                .description("Find all movies on the database")
+                .to("direct:mongodb-movie-findByGender");
+
+
     }
 }
