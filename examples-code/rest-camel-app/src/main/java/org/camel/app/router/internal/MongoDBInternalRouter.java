@@ -25,7 +25,7 @@ public class MongoDBInternalRouter extends RouteBuilder {
                 .description("This route find all movies on mongodb")
                 .process(exchange -> {
                     final String gender = exchange.getIn().getHeader("gender", String.class);
-                    .setHeader(MongoDbConstants.CRITERIA, constant(Filters.eq("gender", gender)));
+                    exchange.getIn().setHeader(MongoDbConstants.CRITERIA, Filters.eq("gender", gender));
                 })
                 .to("mongodb:connectionBean?database=api&collection=movies&operation=findAll");
     }
