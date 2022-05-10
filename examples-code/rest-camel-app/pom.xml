@@ -95,6 +95,18 @@
       <artifactId>camel-jackson</artifactId>
     </dependency>
 
+    <!-- mongodb dependency start -->
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-mongodb</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.camel.springboot</groupId>
+      <artifactId>camel-mongodb-starter</artifactId>
+    </dependency>
+    <!-- mongodb dependency end -->
+
     <!-- Test -->
     <dependency>
       <groupId>org.springframework.boot</groupId>

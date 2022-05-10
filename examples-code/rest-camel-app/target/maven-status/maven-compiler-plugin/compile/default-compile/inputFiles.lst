@@ -1,6 +1,0 @@
-/home/lhsribas/Development/immersion/apache-camel/apache-camel-immersion/examples-code/rest-camel-app/src/main/java/org/camel/app/config/RestConfigRouter.java
-/home/lhsribas/Development/immersion/apache-camel/apache-camel-immersion/examples-code/rest-camel-app/src/main/java/org/camel/app/CamelSpringBootApplication.java
-/home/lhsribas/Development/immersion/apache-camel/apache-camel-immersion/examples-code/rest-camel-app/src/main/java/org/camel/app/router/internal/MovieInternalRouter.java
-/home/lhsribas/Development/immersion/apache-camel/apache-camel-immersion/examples-code/rest-camel-app/src/main/java/org/camel/app/router/rest/MovieRestRouter.java
-/home/lhsribas/Development/immersion/apache-camel/apache-camel-immersion/examples-code/rest-camel-app/src/main/java/org/camel/app/model/Movie.java
-/home/lhsribas/Development/immersion/apache-camel/apache-camel-immersion/examples-code/rest-camel-app/src/main/java/org/camel/app/bean/MovieBean.java

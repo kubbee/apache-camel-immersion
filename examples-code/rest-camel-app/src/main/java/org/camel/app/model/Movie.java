@@ -1,24 +1,22 @@
 package org.camel.app.model;
 
-
 public class Movie {
+    private String name;
+    private String gender;
 
-    private String nome;
-    private String genero;
-
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getGenero() {
-        return genero;
+    public String getGender() {
+        return gender;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

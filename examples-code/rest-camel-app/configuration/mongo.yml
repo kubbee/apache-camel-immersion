@@ -1,12 +1,22 @@
-version: '3.9'
+# Set user/password as root
+version: '3'
 
 services:
-  mongodb:
-    image: mongo:5.0
+
+  mongo:
+    image: mongo
+    restart: always
     ports:
       - 27017:27017
-    volumes:
-      - ~/apps/mongo:/data/db
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=admin
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: api
+    volumes:
+      - $HOME/Development/Volumes/mongo/data/db:/data/db
+    networks:
+      - mongo_network
+
+networks:
+  mongo_network:
+    driver: bridge
