@@ -3,6 +3,7 @@ package org.camel.app.router.internal;
 import com.mongodb.client.model.Filters;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mongodb.MongoDbConstants;
+import org.camel.app.bean.MovieBean;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -23,10 +24,7 @@ public class MongoDBInternalRouter extends RouteBuilder {
         from("direct:mongodb-movie-findByGender")
                 .routeId("direct-mongodb-movie-findByGender-id")
                 .description("This route find all movies on mongodb")
-                .process(exchange -> {
-                    final String gender = exchange.getIn().getHeader("gender", String.class);
-                    exchange.getIn().setHeader(MongoDbConstants.CRITERIA, Filters.eq("gender", gender));
-                })
+                .bean(MovieBean.class, "queryByGender")
                 .to("mongodb:connectionBean?database=api&collection=movies&operation=findAll");
     }
 }

@@ -12,8 +12,6 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
       MONGO_INITDB_DATABASE: api
-    volumes:
-      - $HOME/Development/Volumes/mongo/data/db:/data/db
     networks:
       - mongo_network
 

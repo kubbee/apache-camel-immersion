@@ -17,6 +17,8 @@ public class MovieInternalRouter extends RouteBuilder {
         from("direct:save-movie")
             .routeId("direct-save-movie-id")
             .routeDescription("Send a movie to save on database.")
+            .convertBodyTo(Movie.class)
+            .wireTap("direct:send-movies-kafka")
             .marshal().json(JsonLibrary.Jackson, Movie.class)
             .to("direct:mongodb-movie-insert");
 

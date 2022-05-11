@@ -1,0 +1,22 @@
+{
+  "type": "record",
+  "name": "MovieKafkaRibas",
+  "namespace": "org.camel.app.model",
+  "doc": "Schema for org.camel.app.model.MovieKafkaRibas",
+  "fields": [
+    {
+      "name": "name",
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "gender",
+      "type": [
+        "null",
+        "string"
+      ]
+    }
+  ]
+}
