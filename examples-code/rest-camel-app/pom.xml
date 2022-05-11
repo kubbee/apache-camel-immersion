@@ -16,7 +16,7 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <spring.boot-version>2.6.4</spring.boot-version>
     <surefire.plugin.version>3.0.0-M4</surefire.plugin.version>
-    <avro.version>1.8.2</avro.version>
+    <avro.version>1.11.0</avro.version>
     <spring-schema-registry.version>0.0.4</spring-schema-registry.version>
   </properties>
 
@@ -110,17 +110,14 @@
     <!-- mongodb dependency end -->
 
     <!-- kafka Start-->
-
-
     <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-kafka</artifactId>
+      <groupId>org.apache.camel.springboot</groupId>
+      <artifactId>camel-jackson-avro-starter</artifactId>
     </dependency>
 
     <dependency>
-      <groupId>com.github.mvallim</groupId>
-      <artifactId>spring-schema-registry</artifactId>
-      <version>${spring-schema-registry.version}</version>
+      <groupId>org.apache.camel.springboot</groupId>
+      <artifactId>camel-kafka-starter</artifactId>
     </dependency>
 
     <dependency>

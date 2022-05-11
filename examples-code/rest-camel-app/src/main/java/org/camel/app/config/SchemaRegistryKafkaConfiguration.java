@@ -1,34 +1,29 @@
 package org.camel.app.config;
 
-import io.confluent.kafka.serializers.subject.TopicRecordNameStrategy;
 import org.apache.camel.component.kafka.KafkaConfiguration;
 import org.apache.kafka.clients.producer.internals.DefaultPartitioner;
+import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
-import org.springframework.schemaregistry.serializer.WrapperKafkaAvroSerializer;
 
 import java.util.Properties;
 
+/*
+ * TODO: Existem muitas configurações replicadas, crie uma forma de não replicar e sim reutilizar;
+ */
 public class SchemaRegistryKafkaConfiguration extends KafkaConfiguration {
+
     @Override
     public Properties createProducerProperties() {
         Properties properties = new Properties();
         properties.setProperty("schema.registry.url", "https://psrc-q25x7.us-east-2.aws.confluent.cloud");
         properties.setProperty("bootstrap.servers", "pkc-ymrq7.us-east-2.aws.confluent.cloud:9092");
-        properties.setProperty("client.dns.lookup", "");
         properties.setProperty("client.id", "custom-producer-id");
-        properties.setProperty("key.serializer", StringSerializer.class.getCanonicalName());
-        properties.setProperty("auto.register.schemas", "1");
-        properties.setProperty("value.subject.name.strategy", "");
-        properties.setProperty("key.subject.name.strategy", "");
-        properties.setProperty("sasl.jaas.config", "");
         properties.setProperty("basic.auth.credentials.source", "USER_INFO");
         properties.setProperty("basic.auth.user.info", "ICT3Q2TRNO3E2AS4:3FV82GI9dfF1TAeq9iqkb3o8Xs+b0cZpYSA8wE2Rw0t72kOVOt4v0SO0Bm/Az+Yh");
         properties.setProperty("security.protocol", "SASL_SSL");
         properties.setProperty("sasl.mechanism", "PLAIN");
         properties.setProperty("acks", "all");
         properties.setProperty("auto.register.schemas", "true");
-        properties.setProperty("value.subject.name.strategy", TopicRecordNameStrategy.class.getCanonicalName());
-        properties.setProperty("key.subject.name.strategy", TopicRecordNameStrategy.class.getCanonicalName());
         properties.setProperty("batch.size", "16384");
         properties.setProperty("buffer.memory", "33554432");
         properties.setProperty("client.dns.lookup", "use_all_dns_ips");
@@ -59,11 +54,18 @@ public class SchemaRegistryKafkaConfiguration extends KafkaConfiguration {
         properties.setProperty("send.buffer.bytes", "131072");
         properties.setProperty("socket.connection.setup.timeout.max.ms", "30000");
         properties.setProperty("socket.connection.setup.timeout.ms", "10000");
-        //properties.setProperty("ssl.enabled.protocols", "[TLSv1.2, TLSv1.3]");
-        //properties.setProperty("ssl.endpoint.identification.algorithm", "http");
-        //properties.setProperty("ssl.protocol", "TLSv1.3");
         properties.setProperty("transaction.timeout.ms", "60000");
-        properties.setProperty("value.serializer", WrapperKafkaAvroSerializer.class.getCanonicalName());
+
+        properties.setProperty("key.serializer", StringSerializer.class.getCanonicalName());
+        //properties.setProperty("value.serializer", KafkaAvroSerializer.class.getCanonicalName());
+        properties.setProperty("value.serializer", StringSerializer.class.getCanonicalName());
+
+        properties.setProperty("key.deserializer", StringDeserializer.class.getCanonicalName());
+        //properties.setProperty("value.deserializer", KafkaAvroDeserializer.class.getCanonicalName());
+        properties.setProperty("value.deserializer", StringDeserializer.class.getCanonicalName());
+
+        //properties.setProperty("value.subject.name.strategy", TopicNameStrategy.class.getCanonicalName());
+        //properties.setProperty("key.subject.name.strategy", TopicNameStrategy.class.getCanonicalName());
 
         return properties;
     }
@@ -73,21 +75,13 @@ public class SchemaRegistryKafkaConfiguration extends KafkaConfiguration {
         Properties properties = new Properties();
         properties.setProperty("schema.registry.url", "https://psrc-q25x7.us-east-2.aws.confluent.cloud");
         properties.setProperty("bootstrap.servers", "pkc-ymrq7.us-east-2.aws.confluent.cloud:9092");
-        properties.setProperty("client.dns.lookup", "");
         properties.setProperty("client.id", "custom-consumer-id");
-        properties.setProperty("key.serializer", StringSerializer.class.getCanonicalName());
-        properties.setProperty("auto.register.schemas", "1");
-        properties.setProperty("value.subject.name.strategy", "");
-        properties.setProperty("key.subject.name.strategy", "");
-        properties.setProperty("sasl.jaas.config", "");
         properties.setProperty("basic.auth.credentials.source", "USER_INFO");
         properties.setProperty("basic.auth.user.info", "ICT3Q2TRNO3E2AS4:3FV82GI9dfF1TAeq9iqkb3o8Xs+b0cZpYSA8wE2Rw0t72kOVOt4v0SO0Bm/Az+Yh");
         properties.setProperty("security.protocol", "SASL_SSL");
         properties.setProperty("sasl.mechanism", "PLAIN");
         properties.setProperty("acks", "all");
         properties.setProperty("auto.register.schemas", "true");
-        properties.setProperty("value.subject.name.strategy", TopicRecordNameStrategy.class.getCanonicalName());
-        properties.setProperty("key.subject.name.strategy", TopicRecordNameStrategy.class.getCanonicalName());
         properties.setProperty("batch.size", "16384");
         properties.setProperty("buffer.memory", "33554432");
         properties.setProperty("client.dns.lookup", "use_all_dns_ips");
@@ -118,11 +112,18 @@ public class SchemaRegistryKafkaConfiguration extends KafkaConfiguration {
         properties.setProperty("send.buffer.bytes", "131072");
         properties.setProperty("socket.connection.setup.timeout.max.ms", "30000");
         properties.setProperty("socket.connection.setup.timeout.ms", "10000");
-        //properties.setProperty("ssl.enabled.protocols", "[TLSv1.2, TLSv1.3]");
-        //properties.setProperty("ssl.endpoint.identification.algorithm", "http");
-       //properties.setProperty("ssl.protocol", "TLSv1.3");
         properties.setProperty("transaction.timeout.ms", "60000");
-        properties.setProperty("value.serializer", WrapperKafkaAvroSerializer.class.getCanonicalName());
+
+        properties.setProperty("key.serializer", StringSerializer.class.getCanonicalName());
+        //properties.setProperty("value.serializer", KafkaAvroSerializer.class.getCanonicalName());
+        properties.setProperty("value.serializer", StringSerializer.class.getCanonicalName());
+
+        properties.setProperty("key.deserializer", StringDeserializer.class.getCanonicalName());
+        //properties.setProperty("value.deserializer", KafkaAvroDeserializer.class.getCanonicalName());
+        properties.setProperty("value.deserializer", StringDeserializer.class.getCanonicalName());
+
+        //properties.setProperty("value.subject.name.strategy", TopicNameStrategy.class.getCanonicalName());
+        //properties.setProperty("key.subject.name.strategy", TopicNameStrategy.class.getCanonicalName());
 
         return properties;
     }

@@ -1,39 +1,16 @@
 package org.camel.app.config;
 
-import io.confluent.kafka.serializers.subject.TopicRecordNameStrategy;
-import org.apache.camel.CamelContext;
-import org.apache.camel.Endpoint;
-import org.apache.camel.Producer;
-import org.apache.camel.ProducerTemplate;
-import org.apache.camel.component.kafka.KafkaComponent;
 import org.apache.camel.component.kafka.KafkaConfiguration;
-import org.apache.camel.component.kafka.KafkaEndpoint;
-import org.apache.kafka.clients.NetworkClient;
-import org.apache.kafka.clients.producer.ProducerConfig;
-import org.apache.kafka.clients.producer.internals.DefaultPartitioner;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
-import org.camel.app.model.MovieKafkaRibas;
-import org.eclipse.jetty.io.EndPoint;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.schemaregistry.serializer.WrapperKafkaAvroDeserializer;
-import org.springframework.schemaregistry.serializer.WrapperKafkaAvroSerializer;
-import org.camel.app.model.MovieKafkaRibas;
-
-import java.util.HashMap;
-import java.util.Objects;
-import java.util.Properties;
 
 @Configuration
 public class CustomKafkaConfiguration {
 
-    @Autowired
-    private CamelContext camelContext;
-
-    @Autowired
-    private ProducerTemplate producerTemplate;
+    /*
+     * TODO: Obter as configuração do arquivo de propriedades;
+     */
 
     public KafkaConfiguration kafkaConfiguration(){
         SchemaRegistryKafkaConfiguration configuration = new SchemaRegistryKafkaConfiguration();
@@ -50,26 +27,15 @@ public class CustomKafkaConfiguration {
         configuration.setMaxPollIntervalMs(3000L);
         configuration.setGroupId("group-id");
         configuration.setClientId("movies-id");
+
+        // Serializer
         configuration.setKeySerializer(StringSerializer.class.getCanonicalName());
-        configuration.setValueSerializer(WrapperKafkaAvroSerializer.class.getCanonicalName());
+        configuration.setValueSerializer(StringSerializer.class.getCanonicalName());
+
+        // Deserializer
         configuration.setKeyDeserializer(StringDeserializer.class.getCanonicalName());
-        configuration.setValueDeserializer(WrapperKafkaAvroDeserializer.class.getCanonicalName());
+        configuration.setValueDeserializer(StringDeserializer.class.getCanonicalName());
 
         return configuration;
     }
-
-    @Bean
-    public KafkaEndpoint kafkaEndpoint() throws Exception {
-        var kafkaConfiguration = kafkaConfiguration();
-        kafkaConfiguration.setTopic("movies-kafka-ribas");
-
-        KafkaComponent component  = new KafkaComponent();
-        component.setConfiguration(kafkaConfiguration);
-
-        KafkaEndpoint endpoint  =  new KafkaEndpoint("KafkaMovies", component);
-        endpoint.setConfiguration(kafkaConfiguration);
-
-        return endpoint;
-    }
-
 }

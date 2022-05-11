@@ -5,9 +5,6 @@ import org.camel.app.model.Movie;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Component
 public class MovieRestRouter extends RouteBuilder {
 

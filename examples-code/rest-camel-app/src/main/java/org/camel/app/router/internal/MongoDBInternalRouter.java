@@ -1,8 +1,6 @@
 package org.camel.app.router.internal;
 
-import com.mongodb.client.model.Filters;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.component.mongodb.MongoDbConstants;
 import org.camel.app.bean.MovieBean;
 import org.springframework.stereotype.Component;
 
@@ -10,6 +8,9 @@ import org.springframework.stereotype.Component;
 public class MongoDBInternalRouter extends RouteBuilder {
     @Override
     public void configure() throws Exception {
+        /*
+         * TODO: Depois que salvar a movie no banco quero enviar ao kafka
+         */
         from("direct:mongodb-movie-insert")
                 .routeId("direct-mongodb-movie-insert-id")
                 .description("This route send a movie collection for mongodb")

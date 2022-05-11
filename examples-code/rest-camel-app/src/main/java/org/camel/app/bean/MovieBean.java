@@ -3,11 +3,7 @@ package org.camel.app.bean;
 import com.mongodb.client.model.Filters;
 import org.apache.camel.Exchange;
 import org.apache.camel.component.mongodb.MongoDbConstants;
-import org.camel.app.model.Movie;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class MovieBean {
