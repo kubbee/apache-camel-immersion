@@ -5,7 +5,6 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.kafka.KafkaComponent;
 import org.camel.app.config.CustomKafkaConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 
@@ -14,9 +13,6 @@ public class KafkaInternalRouter extends RouteBuilder {
 
     @Autowired
     private CamelContext camelContext;
-
-    @Value("${direct.send.movies.kafka}")
-    private String autoStartup;
 
     @Override
     public void configure() throws Exception {
@@ -29,10 +25,9 @@ public class KafkaInternalRouter extends RouteBuilder {
 
         camelContext.addComponent("kafka", kafka);
 
-        from("direct:send-movies-kafka")
-                .routeId("direct-send-movies-kafka-id")
-                .autoStartup(Boolean.valueOf(autoStartup))
+        from("kafka:movies-kafka-ribas")
+                .routeId("direct-send-movies-db-id")
                 .description("send movies for kafka topic")
-                .to("kafka:movies-kafka-ribas");
+                .to("direct:mongodb-movie-insert");
     }
 }
