@@ -8,14 +8,12 @@ import org.springframework.stereotype.Component;
 public class MongoDBInternalRouter extends RouteBuilder {
     @Override
     public void configure() throws Exception {
-        /*
-         * TODO: Depois que salvar a movie no banco quero enviar ao kafka
-         */
+
         from("direct:mongodb-movie-insert")
                 .routeId("direct-mongodb-movie-insert-id")
                 .description("This route send a movie collection for mongodb")
-                .convertBodyTo(String.class)
-                .to("mongodb:connectionBean?database=api&collection=movies&operation=insert");
+                .to("mongodb:connectionBean?database=api&collection=movies&operation=insert")
+                .to("direct:send-movies-kafka");
 
         from("direct:mongodb-movie-findAll")
                 .routeId("direct-mongodb-movie-findAll-id")

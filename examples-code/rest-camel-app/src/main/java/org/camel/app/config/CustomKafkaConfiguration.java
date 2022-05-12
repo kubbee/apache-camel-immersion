@@ -3,14 +3,11 @@ package org.camel.app.config;
 import org.apache.camel.component.kafka.KafkaConfiguration;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class CustomKafkaConfiguration {
-
-    /*
-     * TODO: Obter as configuração do arquivo de propriedades;
-     */
 
     public KafkaConfiguration kafkaConfiguration(){
         SchemaRegistryKafkaConfiguration configuration = new SchemaRegistryKafkaConfiguration();
