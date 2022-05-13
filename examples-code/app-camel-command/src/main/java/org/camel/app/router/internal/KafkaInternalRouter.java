@@ -22,14 +22,14 @@ public class KafkaInternalRouter extends RouteBuilder {
     public void configure() throws Exception {
 
         var configuration = new CustomKafkaConfiguration().kafkaConfiguration();
-        configuration.setTopic("movies-kafka-ribas");
+        configuration.setTopic("immersion-camel");
 
         KafkaComponent kafka = new KafkaComponent();
         kafka.setConfiguration(configuration);
 
         camelContext.addComponent("kafka", kafka);
 
-        from("direct:send-movies-kafka")
+        from("direct:immersion-camel")
                 .routeId("direct-send-movies-kafka-id")
                 .autoStartup(Boolean.valueOf(autoStartup))
                 .description("send movies for kafka topic")
